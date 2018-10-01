@@ -149,6 +149,21 @@ class SOF():
 		except KeyError as e:
 			print "Key {} not in master dict. Did you enter the correct directory ({})?".format(e, self.parent_dir)
 
+	def mat_cal_imarec_sof(self):
+		#------------------------------------------------------------------------
+		#---- mat_cal_imarec takes the calibrated image from mat_cal_oifits -----
+		#---- e.g. TARGET_CAL_INT and runs the IRBIS image reconstruction to ----
+		#---- produce TARGET_REC ------------------------------------------------
+		#------------------------------------------------------------------------
+		#-----Create a subdictionary of only these files ------------------------
+		#------------------------------------------------------------------------
+
+		keys = ['TARGET_CAL_INT']
+		try:
+			self.mat_cal_imarec_dict = {key:self.frame_dict[key] for key in keys}
+		except KeyError as e:
+			print "Key {} not in master dict. Did you enter the correct directory ({})?".format(e, self.parent_dir)
+
 
 if __name__ =="__main__":
 	sof = SOF('/home/isbell/matisse_pl/') 
